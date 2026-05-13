@@ -1,59 +1,63 @@
-<h1 align="center">Hi 👋, I'm Xuan Trung</h1>
-<h3 align="center">A AI engineer from VietNam</h3>
+<h1 align="center">Hi there, I'm Nguyen Xuan Trung 👋</h1>
+<h3 align="center">AI Engineer Intern | FPT University</h3>
 
-## 🛠️ Tech stack
+<p align="center">
+  <a href="https://github.com/xuantrung-DA">
+    <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+  <a href="mailto:nxt276651@gmail.com">
+    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
+  </a>
+</p>
 
-**Languages**
+<div align="center">
+  <img src="https://raw.githubusercontent.com/7o64/7o64/main/assets/developer.gif" width="350" alt="Developer coding" />
+</div>
 
-<img src="https://skillicons.dev/icons?i=python,js,ts,go,php,bash" alt="Python, JavaScript, TypeScript, Go, PHP, Bash" />&nbsp;<img src="https://img.shields.io/badge/SQL-4479A1?style=plastic&logo=mysql&logoColor=white" height="48" alt="SQL" />
+---
 
-**Frontend**
+### 🚀 Tech Universe
 
-<img src="https://skillicons.dev/icons?i=html,css,tailwind,react,nextjs" alt="HTML, CSS, Tailwind, React, Next.js" />
+<div align="center">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
+  <img src="https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white" />
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
+  <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
+  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" />
+  <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" />
+</div>
 
-**Databases**
+---
 
-<img src="https://skillicons.dev/icons?i=mysql,postgres,redis" alt="MySQL, PostgreSQL, Redis" />&nbsp;<img src="https://img.shields.io/badge/Neo4j-008CC1?style=plastic&logo=neo4j&logoColor=white" height="48" alt="Neo4j" />
+### 🛠 My Stack & Tools
 
-**DevOps**
+<div align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=py,pytorch,tensorflow,opencv,react,nodejs,prisma,postgres,fastapi,docker,aws,git&theme=dark" />
+  </a>
+</div>
 
-<img src="https://skillicons.dev/icons?i=docker,githubactions,aws,cloudflare,nginx" alt="Docker, GitHub Actions, AWS, Cloudflare, Nginx" />&nbsp;<img src="https://img.shields.io/badge/Coolify-8E3FFF?style=plastic&logo=coolify&logoColor=white" height="48" alt="Coolify" />
+---
 
-**Work environment**
+### 📊 GitHub Activity Graph
 
-<img src="https://skillicons.dev/icons?i=neovim,git" alt="Neovim, Git" />&nbsp;<img src="https://img.shields.io/badge/Ghostty-1C1B1F?style=plastic&logo=ghostty&logoColor=white" height="48" alt="Ghostty" />&nbsp;<img src="https://img.shields.io/badge/Codex-000000?style=plastic&logo=openai&logoColor=white" height="48" alt="Codex" />&nbsp;<img src="https://img.shields.io/badge/Claude%20Code-D97706?style=plastic&logo=anthropic&logoColor=white" height="48" alt="Claude Code" />
+<div align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=xuantrung-DA&bg_color=0D1117&color=ff007f&line=00e5ff&point=FFFFFF&hide_border=true&theme=tokyonight" width="100%" />
+</div>
 
-## 📅 Hobbies
-- Solve programming problems at Codeforces, UVa, LeetCode
-- Watch anime and TV shows
-- Read some manga
-- Play videogames
-- etc...
+---
 
-## 💻 Current projects
-- viajin [WIP] - Side project
-- Automating my personal finances [WIP] - Side project
-  - cashu
-  - cashu - File malware detection
-  - Transactions sync listener
-  - Telegram bot with OCR for bill tracking
+### 📈 GitHub Analytics & Streak
 
-## 🎵 Spotify status
+<div align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=xuantrung-DA&theme=radical&row=1&column=6&margin-w=15&margin-h=15&no-bg=true&no-frame=false" />
+</div>
 
-<a href="https://spotify-widget.jvillegasd.com/?opened">
-  <img src="https://spotify-widget.jvillegasd.com/" width="460" height="240" alt="Now Playing">
-</a>
+<br>
 
-<!-- <div id = "some_issues">
-  <p>It is a little list of problems you can face while implementing this kind of stuff</p>
-  <ul id = "problem_list">
-    <li>
-      Github tend to cache anonymized URL, so you should visit this link if you have problem with image cache.
-      https://docs.github.com/es/github/authenticating-to-github/about-anonymized-image-urls
-    </li>
-    <li>
-      When you wrap your HTML in SVG/foreignObject maybe nothing show up. You can solve this issue visiting this link.
-      https://stackoverflow.com/questions/13848039/svg-foreignobject-contents-do-not-display-unless-plain-text
-    </li>
-  </ul>
-</div> -->
+<div align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=xuantrung-DA&theme=radical&hide_border=true&background=0D1117" width="48%" />
+</div>
