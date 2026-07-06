@@ -1,0 +1,87 @@
+<svg width="900" height="900" viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI profile radar chart">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0D1117"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="poly" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00E5FF" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#F5C542" stop-opacity="0.45"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="900" height="900" rx="32" fill="url(#bg)"/>
+  <text x="450" y="72" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" fill="#F8FAFC" font-weight="700">AI PROFILE RADAR</text>
+  <text x="450" y="108" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#94A3B8">visual snapshot of core strengths</text>
+
+  <!-- Grid -->
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <polygon points="450,180 683.827,315 683.827,585 450,720 216.173,585 216.173,315"/>
+    <polygon points="450,234 637.061,342 637.061,558 450,666 262.939,558 262.939,342"/>
+    <polygon points="450,288 590.296,369 590.296,531 450,612 309.704,531 309.704,369"/>
+    <polygon points="450,342 543.531,396 543.531,504 450,558 356.469,504 356.469,396"/>
+    <polygon points="450,396 496.765,423 496.765,477 450,504 403.235,477 403.235,423"/>
+  </g>
+
+  <!-- Axes -->
+  <g stroke="#475569" stroke-width="2">
+    <line x1="450" y1="450" x2="450" y2="180"/>
+    <line x1="450" y1="450" x2="683.827" y2="315"/>
+    <line x1="450" y1="450" x2="683.827" y2="585"/>
+    <line x1="450" y1="450" x2="450" y2="720"/>
+    <line x1="450" y1="450" x2="216.173" y2="585"/>
+    <line x1="450" y1="450" x2="216.173" y2="315"/>
+  </g>
+
+  <!-- Axis labels -->
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" fill="#E2E8F0">
+    <text x="450" y="156" text-anchor="middle">Research</text>
+    <text x="734" y="306" text-anchor="start">Computer Vision</text>
+    <text x="744" y="606" text-anchor="start">LLM Workflows</text>
+    <text x="450" y="778" text-anchor="middle">Backend AI</text>
+    <text x="162" y="606" text-anchor="end">MLOps / Deploy</text>
+    <text x="154" y="306" text-anchor="end">Product Mindset</text>
+  </g>
+
+  <!-- Scale labels -->
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#64748B">
+    <text x="458" y="403">20</text>
+    <text x="458" y="349">40</text>
+    <text x="458" y="295">60</text>
+    <text x="458" y="241">80</text>
+    <text x="458" y="187">100</text>
+  </g>
+
+  <!-- Data polygon: Research 92, CV 90, LLM 88, Backend 82, MLOps 78, Product 80 -->
+  <polygon points="450,201.6 660.444,328.5 655.768,568.8 450,671.4 267.545,555.3 262.939,342" fill="url(#poly)" stroke="#00E5FF" stroke-width="4" filter="url(#glow)"/>
+
+  <!-- Data points -->
+  <g fill="#F5C542" stroke="#0D1117" stroke-width="3" filter="url(#glow)">
+    <circle cx="450" cy="201.6" r="8"/>
+    <circle cx="660.444" cy="328.5" r="8"/>
+    <circle cx="655.768" cy="568.8" r="8"/>
+    <circle cx="450" cy="671.4" r="8"/>
+    <circle cx="267.545" cy="555.3" r="8"/>
+    <circle cx="262.939" cy="342" r="8"/>
+  </g>
+
+  <!-- Legend cards -->
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="100" y="804" width="700" height="58" rx="18" fill="#0B1220" stroke="#223047"/>
+    <g fill="#E2E8F0" font-size="18" font-weight="600">
+      <text x="125" y="839">Research 92</text>
+      <text x="245" y="839">CV 90</text>
+      <text x="335" y="839">LLM 88</text>
+      <text x="445" y="839">Backend 82</text>
+      <text x="585" y="839">MLOps 78</text>
+      <text x="705" y="839">Product 80</text>
+    </g>
+  </g>
+</svg>
