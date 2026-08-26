@@ -3,7 +3,9 @@ name: Profile Metrics
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *"
+    # 17:17 UTC = 00:17 Asia/Ho_Chi_Minh
+    - cron: "17 17 * * *"
+
 jobs:
   github-metrics:
     runs-on: ubuntu-latest
@@ -20,8 +22,8 @@ jobs:
 
           filename: assets/github-activity.svg
 
-          base: ""
           template: classic
+          base: ""
 
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
