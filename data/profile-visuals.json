@@ -1,0 +1,94 @@
+{
+  "signals": [
+    "Applied AI, engineered for production.",
+    "Computer Vision · LLM Agents · Backend Systems",
+    "Research-backed · Production-minded · Impact-driven"
+  ],
+  "facts": [
+    {
+      "label": "EDUCATION",
+      "value": "FPT UNIVERSITY · B.SC. AI"
+    },
+    {
+      "label": "GPA",
+      "value": "3.75 / 4.00"
+    },
+    {
+      "label": "GRADUATION",
+      "value": "06 / 2027"
+    },
+    {
+      "label": "STATUS",
+      "value": "OPEN TO AI ENGINEER · APPLIED AI"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Flux AI",
+      "domain": "AGENTIC FINANCE",
+      "description": "Personal financial coach with transaction-driven recommendations",
+      "stack": ["FastAPI", "LLM", "Agents"]
+    },
+    {
+      "name": "Secure Login System",
+      "domain": "COMPUTER VISION SECURITY",
+      "description": "Face anti-spoofing 96.9% · ACER 0.032 · recognition 95.8%",
+      "stack": ["PyTorch", "OpenCV"]
+    },
+    {
+      "name": "AI FOR ECOM",
+      "domain": "COMMERCE INTELLIGENCE",
+      "description": "Product segmentation, market intelligence and ETL pipelines",
+      "stack": ["Python", "FastAPI", "PostgreSQL", "Docker", "AWS"]
+    },
+    {
+      "name": "AI Livestream Platform",
+      "domain": "GENERATIVE AI",
+      "description": "AI support for live selling and post-stream analytics",
+      "stack": ["LLM", "AI Pipelines"]
+    }
+  ],
+  "research": [
+    {
+      "type": "RECOGNITION",
+      "year": "2025",
+      "title": "Top 100 Excellent Students",
+      "detail": "FPT University · Summer & Fall Semesters"
+    },
+    {
+      "type": "SPRINGER LNAI · VOL. 16370",
+      "year": "2026",
+      "title": "Weather Forecasting System “Four Seasons in One Day” and Shelter Suggestion for Sydney, Melbourne and Canberra",
+      "detail": "AJCAI 2025 · Published 2026"
+    },
+    {
+      "type": "SPRINGER LNEE · VOL. 1531",
+      "year": "2026",
+      "title": "Optimizing YOLOv11n for Real-Time Object Detection: Leveraging Quantization and Model Optimization",
+      "detail": "EIDT 2025 · Published 2026"
+    }
+  ],
+  "certifications": [
+    {
+      "title": "Gradient to Production: MLOps & Model Serving",
+      "issuer": "Coursera",
+      "date": "07 / 2026"
+    },
+    {
+      "title": "AI Engineer Professional",
+      "issuer": "Packt",
+      "date": "07 / 2026"
+    },
+    {
+      "title": "Natural Language Processing",
+      "issuer": "DeepLearning.AI",
+      "date": "04 / 2026"
+    },
+    {
+      "title": "Neural Networks and Deep Learning",
+      "issuer": "DeepLearning.AI",
+      "date": "11 / 2025"
+    }
+  ],
+  "footer": "Building AI systems that are accurate, useful, and deployable."
+}

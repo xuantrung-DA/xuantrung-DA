@@ -1,0 +1,62 @@
+{
+  "eyebrow": "SYSTEM ARCHITECTURE",
+  "title": "AI ENGINEERING CONTROL PLANE",
+  "subtitle": "A practical path from models to monitored systems",
+  "sections": [
+    {
+      "phase": "BUILD",
+      "title": "MODEL ENGINEERING",
+      "accent": "#D5A84F",
+      "items": [
+        "Python",
+        "SQL",
+        "PyTorch",
+        "TensorFlow",
+        "scikit-learn",
+        "OpenCV"
+      ]
+    },
+    {
+      "phase": "REASON",
+      "title": "APPLIED AI",
+      "accent": "#AAB4CB",
+      "items": [
+        "Machine Learning",
+        "Computer Vision",
+        "Natural Language Processing",
+        "Reinforcement Learning",
+        "Multimodal Learning",
+        "Time-Series Modeling"
+      ]
+    },
+    {
+      "phase": "ORCHESTRATE",
+      "title": "AGENTIC SYSTEMS",
+      "accent": "#7F9AC8",
+      "items": [
+        "LangGraph",
+        "LangChain",
+        "RAG",
+        "Tool Calling"
+      ]
+    },
+    {
+      "phase": "DELIVER",
+      "title": "PRODUCTION LAYER",
+      "accent": "#F2CD7B",
+      "items": [
+        "FastAPI",
+        "REST APIs",
+        "PostgreSQL",
+        "SQL Server",
+        "ETL Pipelines",
+        "Git"
+      ]
+    }
+  ],
+  "principles": [
+    "RESEARCH-BACKED",
+    "PRODUCTION-MINDED",
+    "IMPACT-DRIVEN"
+  ]
+}

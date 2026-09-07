@@ -1,0 +1,469 @@
+"""Generate the animated SVG system used by the profile README.
+
+Usage:
+    py scripts/generate_readme_visuals.py
+    py scripts/generate_readme_visuals.py --check
+    py scripts/generate_readme_visuals.py --only tech-stack
+
+Edit data/profile-visuals.json or data/tech-stack.json, then rerun this script.
+Only Python's standard library is required.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+import textwrap
+from pathlib import Path
+from typing import Any
+from xml.sax.saxutils import escape
+
+
+ROOT = Path(__file__).resolve().parents[1]
+PROFILE_DATA_PATH = ROOT / "data" / "profile-visuals.json"
+STACK_DATA_PATH = ROOT / "data" / "tech-stack.json"
+ASSET_DIR = ROOT / "assets"
+WIDTH = 1200
+
+COLORS = {
+    "background": "#050816",
+    "background_2": "#091226",
+    "navy": "#111A30",
+    "steel": "#243453",
+    "silver": "#AAB4CB",
+    "white": "#F8FAFF",
+    "cool_white": "#E4E8F1",
+    "gold": "#D5A84F",
+    "gold_dark": "#8A6A2F",
+    "gold_light": "#F2CD7B",
+    "blue": "#7F9AC8",
+}
+
+
+def xml(value: Any) -> str:
+    return escape(str(value), {'"': "&quot;"})
+
+
+def compact_number(value: float) -> str:
+    return f"{value:.2f}".rstrip("0").rstrip(".")
+
+
+def wrap_text(value: str, width: int) -> list[str]:
+    return textwrap.wrap(
+        value,
+        width=width,
+        break_long_words=False,
+        break_on_hyphens=False,
+    ) or [""]
+
+
+def pack_items(items: list[str], max_chars: int = 31) -> list[str]:
+    lines: list[str] = []
+    current = ""
+    for item in items:
+        candidate = item if not current else f"{current} · {item}"
+        if current and len(candidate) > max_chars:
+            lines.append(current)
+            current = item
+        else:
+            current = candidate
+    if current:
+        lines.append(current)
+    return lines
+
+
+def tspans(
+    lines: list[str],
+    *,
+    x: float,
+    y: float,
+    line_height: float,
+    css_class: str,
+    anchor: str = "start",
+) -> str:
+    chunks = [
+        f'<text x="{compact_number(x)}" y="{compact_number(y)}" class="{css_class}" text-anchor="{anchor}">'
+    ]
+    for index, line in enumerate(lines):
+        dy = "0" if index == 0 else compact_number(line_height)
+        chunks.append(
+            f'  <tspan x="{compact_number(x)}" dy="{dy}">{xml(line)}</tspan>'
+        )
+    chunks.append("</text>")
+    return "\n".join(chunks)
+
+
+def common_defs() -> str:
+    return f"""
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="{COLORS['background']}"/>
+      <stop offset="0.56" stop-color="{COLORS['background_2']}"/>
+      <stop offset="1" stop-color="{COLORS['navy']}"/>
+    </linearGradient>
+    <linearGradient id="signal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="{COLORS['blue']}" stop-opacity="0"/>
+      <stop offset="0.52" stop-color="{COLORS['gold_light']}"/>
+      <stop offset="1" stop-color="{COLORS['gold']}" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M36 0H0V36" fill="none" stroke="{COLORS['blue']}" stroke-width="0.6" stroke-opacity="0.07"/>
+    </pattern>
+    <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M1 1L9 5L1 9" fill="none" stroke="{COLORS['gold']}" stroke-width="1.6"/>
+    </marker>
+    <style>
+      .sans {{ font-family: Inter, "Segoe UI", Arial, sans-serif; }}
+      .mono {{ font-family: "JetBrains Mono", Consolas, monospace; }}
+      .eyebrow {{ fill: {COLORS['gold']}; font-size: 12px; font-weight: 700; letter-spacing: 3px; }}
+      .title {{ fill: {COLORS['white']}; font-size: 31px; font-weight: 720; letter-spacing: .5px; }}
+      .subtitle {{ fill: {COLORS['silver']}; font-size: 15px; font-weight: 450; letter-spacing: .35px; }}
+      .flow {{ stroke-dasharray: 8 10; animation: dash 5s linear infinite; }}
+      .slow-flow {{ stroke-dasharray: 4 12; animation: dash 10s linear infinite reverse; }}
+      .soft-pulse {{ animation: pulse 3.2s ease-in-out infinite; }}
+      .blink {{ animation: blink 1.25s steps(2, end) infinite; }}
+      @keyframes dash {{ to {{ stroke-dashoffset: -90; }} }}
+      @keyframes pulse {{ 0%, 100% {{ opacity: .35; }} 50% {{ opacity: 1; }} }}
+      @keyframes blink {{ 50% {{ opacity: .15; }} }}
+      @media (prefers-reduced-motion: reduce) {{
+        .flow, .slow-flow, .soft-pulse, .blink {{ animation: none !important; }}
+        animate, animateMotion {{ display: none; }}
+      }}
+    </style>
+  </defs>""".strip()
+
+
+def shell(title: str, description: str, height: int, body: str) -> str:
+    return f"""<!-- Generated by scripts/generate_readme_visuals.py. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{height}" viewBox="0 0 {WIDTH} {height}" role="img" aria-labelledby="title desc">
+  <title id="title">{xml(title)}</title>
+  <desc id="desc">{xml(description)}</desc>
+{common_defs()}
+  <rect width="{WIDTH}" height="{height}" rx="22" fill="url(#bg)"/>
+  <rect width="{WIDTH}" height="{height}" rx="22" fill="url(#grid)"/>
+  <rect x="1" y="1" width="1198" height="{height - 2}" rx="21" fill="none" stroke="{COLORS['steel']}" stroke-width="2"/>
+{body}
+</svg>
+"""
+
+
+def section_header(eyebrow: str, title: str, subtitle: str) -> str:
+    return f"""
+  <g class="sans">
+    <text x="42" y="46" class="eyebrow">{xml(eyebrow)}</text>
+    <text x="42" y="82" class="title">{xml(title)}</text>
+    <text x="42" y="109" class="subtitle">{xml(subtitle)}</text>
+  </g>
+  <circle cx="1136" cy="48" r="4" fill="{COLORS['gold']}" class="soft-pulse"/>
+  <text x="1118" y="52" text-anchor="end" class="mono" fill="{COLORS['blue']}" font-size="11" letter-spacing="1.5">SYSTEM / ACTIVE</text>
+  <path d="M42 129H1158" stroke="{COLORS['steel']}" stroke-width="1"/>
+  <path d="M42 129H292" stroke="url(#signal)" stroke-width="2" class="flow"/>
+""".rstrip()
+
+
+def build_profile_signal(data: dict[str, Any]) -> str:
+    signals = data["signals"]
+    facts = data["facts"]
+    if len(signals) != 3:
+        raise ValueError("profile signals must contain exactly three messages")
+    if len(facts) != 4:
+        raise ValueError("profile facts must contain exactly four entries")
+
+    message_animations = [
+        ("1;1;0;0;1", "0;0.30;0.32;0.98;1"),
+        ("0;0;1;1;0", "0;0.32;0.34;0.63;0.65"),
+        ("0;0;1;1;0", "0;0.65;0.67;0.97;1"),
+    ]
+    body: list[str] = [
+        f'<circle cx="42" cy="36" r="4" fill="{COLORS["gold"]}" filter="url(#softGlow)"><animate attributeName="opacity" values=".35;1;.35" dur="2.6s" repeatCount="indefinite"/></circle>',
+        f'<text x="58" y="41" class="mono" fill="{COLORS["cool_white"]}" font-size="12" letter-spacing="1.8">APPLIED AI / SYSTEMS ENGINEERING</text>',
+        f'<text x="1158" y="41" text-anchor="end" class="mono" fill="{COLORS["blue"]}" font-size="11" letter-spacing="1.4">UTC +07 / ONLINE</text>',
+    ]
+    for message, (values, key_times) in zip(signals, message_animations):
+        body.append(
+            f'<text x="600" y="78" text-anchor="middle" class="sans" fill="{COLORS["white"]}" font-size="20" font-weight="600" letter-spacing=".45" opacity="0">{xml(message)}<animate attributeName="opacity" values="{values}" keyTimes="{key_times}" dur="12s" repeatCount="indefinite"/></text>'
+        )
+    body.extend(
+        [
+            f'<rect x="42" y="92" width="1116" height="1" fill="{COLORS["steel"]}"/>',
+            f'<rect x="42" y="91" width="100" height="2" fill="url(#signal)"><animate attributeName="x" values="42;1058;42" dur="8s" repeatCount="indefinite"/></rect>',
+        ]
+    )
+    cell_width = 1116 / len(facts)
+    for index, fact in enumerate(facts):
+        x = 42 + cell_width * index
+        if index:
+            body.append(f'<path d="M{compact_number(x)} 107V139" stroke="{COLORS["steel"]}" stroke-width="1"/>')
+        body.extend(
+            [
+                f'<text x="{compact_number(x + 16)}" y="118" class="mono" fill="{COLORS["blue"]}" font-size="9.5" letter-spacing="1.4">{xml(fact["label"])}</text>',
+                f'<text x="{compact_number(x + 16)}" y="137" class="sans" fill="{COLORS["cool_white"]}" font-size="12.5" font-weight="600">{xml(fact["value"])}</text>',
+            ]
+        )
+    return shell(
+        "Applied AI engineering profile signal",
+        "Animated profile summary with engineering focus, education, GPA, graduation date, and role availability.",
+        154,
+        "\n".join(f"  {line}" for line in body),
+    )
+
+
+def build_tech_stack(data: dict[str, Any]) -> str:
+    sections = data["sections"]
+    if not 2 <= len(sections) <= 5:
+        raise ValueError("tech stack must contain between two and five sections")
+    node_start, node_end = 150.0, 1050.0
+    spacing = (node_end - node_start) / (len(sections) - 1)
+    positions = [node_start + spacing * index for index in range(len(sections))]
+
+    body: list[str] = [
+        section_header(data["eyebrow"], data["title"], data["subtitle"]),
+        f'<text x="600" y="164" text-anchor="middle" class="mono" fill="{COLORS["gold"]}" font-size="10" letter-spacing="2.2">FEEDBACK / ITERATION</text>',
+        f'<path d="M{compact_number(positions[-1])} 222C{compact_number(positions[-1])} 160 {compact_number(positions[0])} 160 {compact_number(positions[0])} 222" fill="none" stroke="{COLORS["gold_dark"]}" stroke-width="1.4" stroke-opacity=".7" marker-end="url(#arrow)" class="slow-flow"/>',
+        f'<path d="M{compact_number(positions[0])} 222H{compact_number(positions[-1])}" fill="none" stroke="{COLORS["blue"]}" stroke-width="1.6" stroke-opacity=".85" class="flow"/>',
+        f'<circle r="4" fill="{COLORS["gold_light"]}" filter="url(#softGlow)"><animateMotion dur="6.5s" repeatCount="indefinite" path="M{compact_number(positions[0])} 222H{compact_number(positions[-1])}"/></circle>',
+    ]
+    for index, (section, x) in enumerate(zip(sections, positions), start=1):
+        accent = section["accent"]
+        lines = pack_items([str(item) for item in section["items"]], max_chars=39)
+        body.extend(
+            [
+                f'<text x="{compact_number(x)}" y="198" text-anchor="middle" class="mono" fill="{COLORS["blue"]}" font-size="10.5" letter-spacing="1.8">{xml(section["phase"])}</text>',
+                f'<circle cx="{compact_number(x)}" cy="222" r="25" fill="{COLORS["background_2"]}" stroke="{accent}" stroke-width="1.7"/>',
+                f'<circle cx="{compact_number(x)}" cy="222" r="34" fill="none" stroke="{accent}" stroke-width="1" opacity=".25"><animate attributeName="r" values="29;37;29" dur="{3.1 + index * .35:.2f}s" repeatCount="indefinite"/><animate attributeName="opacity" values=".35;.08;.35" dur="3.8s" repeatCount="indefinite"/></circle>',
+                f'<text x="{compact_number(x)}" y="228" text-anchor="middle" class="mono" fill="{COLORS["white"]}" font-size="13" font-weight="700">{index:02d}</text>',
+                f'<text x="{compact_number(x)}" y="278" text-anchor="middle" class="sans" fill="{COLORS["white"]}" font-size="16" font-weight="700" letter-spacing=".8">{xml(section["title"])}</text>',
+            ]
+        )
+        for line_index, line in enumerate(lines):
+            body.append(f'<text x="{compact_number(x)}" y="{310 + line_index * 20}" text-anchor="middle" class="sans" fill="{COLORS["silver"]}" font-size="12.5">{xml(line)}</text>')
+
+    body.extend(
+        [
+            f'<path d="M42 415H1158" stroke="{COLORS["steel"]}" stroke-width="1"/>',
+            f'<text x="42" y="445" class="mono" fill="{COLORS["blue"]}" font-size="10" letter-spacing="1.8">ENGINEERING PRINCIPLES</text>',
+        ]
+    )
+    principle_width = 760 / len(data["principles"])
+    for index, principle in enumerate(data["principles"]):
+        x = 350 + principle_width * (index + 0.5)
+        color = COLORS["gold_light"] if index == len(data["principles"]) - 1 else COLORS["cool_white"]
+        body.append(f'<text x="{compact_number(x)}" y="445" text-anchor="middle" class="mono" fill="{color}" font-size="11.5" letter-spacing="1.2">{xml(principle)}</text>')
+    body.append(f'<circle cx="1148" cy="441" r="4" fill="{COLORS["gold"]}" class="soft-pulse"/>')
+    return shell(
+        data["title"],
+        "Animated control-plane map of technologies across model engineering, applied AI, agent systems, and production delivery.",
+        470,
+        "\n".join(f"  {line}" for line in body),
+    )
+
+
+def build_selected_work(data: dict[str, Any]) -> str:
+    projects = data["projects"]
+    body: list[str] = [
+        section_header(
+            "SELECTED SYSTEMS",
+            "WORK THAT CONNECTS MODELS TO OUTCOMES",
+            "Four builds across agentic AI, computer vision, commerce, and live systems",
+        ),
+        f'<path d="M72 158V455" stroke="{COLORS["steel"]}" stroke-width="2"/>',
+        f'<circle cx="72" cy="158" r="4" fill="{COLORS["gold_light"]}" filter="url(#softGlow)"><animate attributeName="cy" values="158;455;158" dur="7s" repeatCount="indefinite"/></circle>',
+        f'<text x="930" y="145" class="mono" fill="{COLORS["blue"]}" font-size="9.5" letter-spacing="1.6">CORE TECHNOLOGIES</text>',
+    ]
+    row_start, row_height = 164, 82
+    for index, project in enumerate(projects, start=1):
+        y = row_start + (index - 1) * row_height
+        description_lines = wrap_text(project["description"], 63)[:2]
+        stack_lines = pack_items(project["stack"], 31)[:2]
+        description = tspans(description_lines, x=380, y=y + 20, line_height=20, css_class="sans").replace('class="sans"', f'class="sans" fill="{COLORS["silver"]}" font-size="14"')
+        stack = tspans(stack_lines, x=930, y=y + 20, line_height=19, css_class="mono").replace('class="mono"', f'class="mono" fill="{COLORS["cool_white"]}" font-size="10.5" letter-spacing=".7"')
+        body.extend(
+            [
+                f'<circle cx="72" cy="{y + 22}" r="7" fill="{COLORS["background_2"]}" stroke="{COLORS["gold"] if index == 2 else COLORS["blue"]}" stroke-width="1.5"><animate attributeName="opacity" values=".45;1;.45" dur="{3 + index * .45:.2f}s" repeatCount="indefinite"/></circle>',
+                f'<text x="35" y="{y + 26}" class="mono" fill="{COLORS["gold"]}" font-size="11">{index:02d}</text>',
+                f'<text x="105" y="{y + 22}" class="sans" fill="{COLORS["white"]}" font-size="19" font-weight="700">{xml(project["name"])}</text>',
+                f'<text x="105" y="{y + 43}" class="mono" fill="{COLORS["blue"]}" font-size="9.5" letter-spacing="1.45">{xml(project["domain"])}</text>',
+                description,
+                stack,
+                f'<path d="M105 {y + 62}H1158" stroke="{COLORS["steel"]}" stroke-width="1" stroke-opacity=".8"/>',
+            ]
+        )
+    body.extend(
+        [
+            f'<rect x="105" y="493" width="1053" height="2" fill="{COLORS["steel"]}"/>',
+            f'<rect x="105" y="492" width="130" height="3" fill="url(#signal)"><animate attributeName="x" values="105;1028;105" dur="9s" repeatCount="indefinite"/></rect>',
+        ]
+    )
+    return shell(
+        "Selected AI engineering work",
+        "Animated timeline of selected projects with outcomes and core technologies.",
+        520,
+        "\n".join(f"  {line}" for line in body),
+    )
+
+
+def build_research(data: dict[str, Any]) -> str:
+    entries = data["research"]
+    if len(entries) != 3:
+        raise ValueError("research visual currently expects exactly three entries")
+    column_width = 360
+    starts = [42, 420, 798]
+    centers = [start + column_width / 2 for start in starts]
+    body: list[str] = [
+        section_header(
+            "RESEARCH / RECOGNITION",
+            "EVIDENCE BEFORE CLAIMS",
+            "Peer-reviewed applied AI work and sustained academic performance",
+        ),
+        f'<path d="M{centers[0]} 191H{centers[-1]}" stroke="{COLORS["blue"]}" stroke-width="1.5" class="flow"/>',
+        f'<circle r="4" fill="{COLORS["gold_light"]}" filter="url(#softGlow)"><animateMotion dur="7.5s" repeatCount="indefinite" path="M{centers[0]} 191H{centers[-1]}"/></circle>',
+    ]
+    for index, (entry, start, center) in enumerate(zip(entries, starts, centers), start=1):
+        title_width = 32 if index == 1 else 43
+        title_lines = wrap_text(entry["title"], title_width)
+        detail_y = 270 + len(title_lines) * 23 + 12
+        title = tspans(title_lines, x=start, y=270, line_height=23, css_class="sans").replace('class="sans"', f'class="sans" fill="{COLORS["white"]}" font-size="16" font-weight="650"')
+        body.extend(
+            [
+                f'<text x="{compact_number(center)}" y="169" text-anchor="middle" class="mono" fill="{COLORS["gold"]}" font-size="11" letter-spacing="1.5">{xml(entry["year"])}</text>',
+                f'<circle cx="{compact_number(center)}" cy="191" r="8" fill="{COLORS["background_2"]}" stroke="{COLORS["gold"] if index == 1 else COLORS["blue"]}" stroke-width="1.6"/>',
+                f'<circle cx="{compact_number(center)}" cy="191" r="14" fill="none" stroke="{COLORS["gold"] if index == 1 else COLORS["blue"]}" stroke-opacity=".2"><animate attributeName="r" values="11;17;11" dur="{3.2 + index * .4:.2f}s" repeatCount="indefinite"/></circle>',
+                f'<path d="M{compact_number(center)} 200V223" stroke="{COLORS["steel"]}"/>',
+                f'<text x="{start}" y="242" class="mono" fill="{COLORS["blue"]}" font-size="10" letter-spacing="1.3">{xml(entry["type"])}</text>',
+                title,
+                f'<text x="{start}" y="{detail_y}" class="sans" fill="{COLORS["silver"]}" font-size="13">{xml(entry["detail"])}</text>',
+            ]
+        )
+        if index < len(entries):
+            divider_x = start + column_width + 9
+            body.append(f'<path d="M{divider_x} 232V452" stroke="{COLORS["steel"]}" stroke-width="1" stroke-opacity=".65"/>')
+    body.append(f'<text x="1158" y="480" text-anchor="end" class="mono" fill="{COLORS["gold_dark"]}" font-size="10" letter-spacing="1.4">RESEARCH-BACKED / PRODUCTION-MINDED</text>')
+    return shell(
+        "Research and recognition",
+        "Animated research timeline showing one academic recognition and two Springer publications.",
+        500,
+        "\n".join(f"  {line}" for line in body),
+    )
+
+
+def build_credentials(data: dict[str, Any]) -> str:
+    credentials = data["certifications"]
+    if len(credentials) != 4:
+        raise ValueError("credentials visual currently expects exactly four entries")
+    body: list[str] = [
+        section_header(
+            "CONTINUOUS LEARNING",
+            "CREDENTIALS THAT SUPPORT THE SYSTEM",
+            "Focused training across model development, language systems, and production delivery",
+        )
+    ]
+    column_width = 279
+    for index, credential in enumerate(credentials, start=1):
+        x = 42 + (index - 1) * column_width
+        title_lines = wrap_text(credential["title"], 31)[:3]
+        title = tspans(title_lines, x=x, y=197, line_height=21, css_class="sans").replace('class="sans"', f'class="sans" fill="{COLORS["white"]}" font-size="15.5" font-weight="650"')
+        if index > 1:
+            body.append(f'<path d="M{x - 12} 153V266" stroke="{COLORS["steel"]}" stroke-width="1"/>')
+        body.extend(
+            [
+                f'<text x="{x}" y="163" class="mono" fill="{COLORS["gold"]}" font-size="10.5" letter-spacing="1.3">{xml(credential["date"])}</text>',
+                f'<text x="{x + column_width - 28}" y="164" text-anchor="end" class="mono" fill="{COLORS["steel"]}" font-size="24">{index:02d}</text>',
+                title,
+                f'<text x="{x}" y="{211 + len(title_lines) * 21}" class="sans" fill="{COLORS["blue"]}" font-size="12.5">{xml(credential["issuer"])}</text>',
+                f'<rect x="{x}" y="274" width="{column_width - 30}" height="2" fill="{COLORS["steel"]}"/>',
+                f'<rect x="{x}" y="273" width="52" height="3" fill="{COLORS["gold"]}" opacity=".8" class="soft-pulse"/>',
+            ]
+        )
+    return shell(
+        "Professional credentials",
+        "Animated credential rail covering MLOps, AI engineering, NLP, and deep learning.",
+        302,
+        "\n".join(f"  {line}" for line in body),
+    )
+
+
+def build_footer(data: dict[str, Any]) -> str:
+    body = f"""
+  <path d="M42 76H330L352 76L365 58L382 92L400 70L418 76H1158" fill="none" stroke="{COLORS['steel']}" stroke-width="1.4" class="flow"/>
+  <circle r="4" fill="{COLORS['gold_light']}" filter="url(#softGlow)">
+    <animateMotion dur="8s" repeatCount="indefinite" path="M42 76H330L352 76L365 58L382 92L400 70L418 76H1158"/>
+  </circle>
+  <text x="600" y="45" text-anchor="middle" class="mono" fill="{COLORS['cool_white']}" font-size="13" letter-spacing="1.3">{xml(str(data['footer']).upper())}</text>
+  <rect x="944" y="32" width="8" height="16" fill="{COLORS['gold']}" class="blink"/>
+  <text x="42" y="102" class="mono" fill="{COLORS['blue']}" font-size="9.5" letter-spacing="1.5">RESEARCH → ENGINEERING → DELIVERY</text>
+  <text x="1158" y="102" text-anchor="end" class="mono" fill="{COLORS['gold_dark']}" font-size="9.5" letter-spacing="1.5">END OF PROFILE / KEEP BUILDING</text>""".rstrip()
+    return shell(
+        "Engineering profile footer",
+        "Animated closing signal about building accurate, useful, and deployable AI systems.",
+        118,
+        body,
+    )
+
+
+def load_json(path: Path) -> dict[str, Any]:
+    with path.open("r", encoding="utf-8") as file:
+        return json.load(file)
+
+
+def generate_outputs() -> dict[str, str]:
+    profile_data = load_json(PROFILE_DATA_PATH)
+    stack_data = load_json(STACK_DATA_PATH)
+    return {
+        "profile-signal": build_profile_signal(profile_data),
+        "tech-stack": build_tech_stack(stack_data),
+        "selected-work": build_selected_work(profile_data),
+        "research": build_research(profile_data),
+        "credentials": build_credentials(profile_data),
+        "footer": build_footer(profile_data),
+    }
+
+
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--check", action="store_true", help="Fail when a generated SVG is out of date.")
+    parser.add_argument(
+        "--only",
+        choices=("profile-signal", "tech-stack", "selected-work", "research", "credentials", "footer"),
+        help="Generate or check only one visual.",
+    )
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
+    try:
+        outputs = generate_outputs()
+    except (OSError, json.JSONDecodeError, KeyError, TypeError, ValueError) as error:
+        print(f"README visual generation failed: {error}", file=sys.stderr)
+        return 1
+
+    selected = {args.only: outputs[args.only]} if args.only else outputs
+    stale: list[str] = []
+    for name, content in selected.items():
+        path = ASSET_DIR / f"{name}.svg"
+        if args.check:
+            if not path.exists() or path.read_text(encoding="utf-8") != content:
+                stale.append(path.relative_to(ROOT).as_posix())
+            continue
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content, encoding="utf-8", newline="\n")
+        print(f"Generated {path.relative_to(ROOT).as_posix()}")
+
+    if stale:
+        print("Out-of-date generated assets:", file=sys.stderr)
+        for path in stale:
+            print(f"  - {path}", file=sys.stderr)
+        print("Run: py scripts/generate_readme_visuals.py", file=sys.stderr)
+        return 1
+    if args.check:
+        print("README visuals are up to date.")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
