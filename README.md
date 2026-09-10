@@ -1,85 +1,176 @@
 <!--
-  MIDNIGHT DIAMOND / EXECUTIVE AI
-  Edit data/profile-visuals.json and data/tech-stack.json, then run:
-  py scripts/generate_readme_visuals.py
+  NEON LAB / GITHUB PROFILE
+  Visuals: python scripts/generate_readme_visuals.py
+  Verify:  python scripts/generate_readme_visuals.py --check
+  Maintenance: docs/MAINTENANCE.md
+  Keep image alt text in sync with the visuals.
 -->
 
-<div align="center">
-  <img
-    width="100%"
-    src="./assets/hero-banner.png"
-    alt="Nguyen Xuan Trung — AI Engineer and Applied AI"
-  />
+<p align="center">
+    <picture>
+      <source media="(max-width: 800px) and (prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/hero-dark-mobile-still.svg">
+      <source media="(max-width: 800px) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/hero-light-mobile-still.svg">
+      <source media="(prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/hero-dark-desktop-still.svg">
+      <source media="(prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/hero-light-desktop-still.svg">
+      <source media="(max-width: 800px) and (prefers-color-scheme: dark)" srcset="./assets/neon-lab/hero-dark-mobile.svg">
+      <source media="(max-width: 800px)" srcset="./assets/neon-lab/hero-light-mobile.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="./assets/neon-lab/hero-dark-desktop.svg">
+      <img width="100%" src="./assets/neon-lab/hero-light-desktop.svg" alt="Nguyen Xuan Trung — AI Engineer in Ho Chi Minh City. Curiosity, engineered. Evidence-grounded AI, multimodal search and RAG systems built to be inspected.">
+    </picture>
+</p>
 
-  <br />
+<p align="center">
+  <a href="https://xuantrung-ai-portfolio.vercel.app/">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="./assets/neon-lab/nav-portfolio-dark.svg">
+      <img width="150" src="./assets/neon-lab/nav-portfolio-light.svg" alt="Portfolio">
+    </picture>
+  </a>
+  <a href="https://xuantrung-ai-portfolio.vercel.app/cv/NguyenXuanTrung_AI_Engineer_CV.pdf">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="./assets/neon-lab/nav-resume-dark.svg">
+      <img width="150" src="./assets/neon-lab/nav-resume-light.svg" alt="Résumé">
+    </picture>
+  </a>
+  <a href="https://www.linkedin.com/in/trung-nguyen-3932b4265/">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="./assets/neon-lab/nav-linkedin-dark.svg">
+      <img width="150" src="./assets/neon-lab/nav-linkedin-light.svg" alt="LinkedIn">
+    </picture>
+  </a>
+  <a href="mailto:nxt276651@gmail.com">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="./assets/neon-lab/nav-email-dark.svg">
+      <img width="150" src="./assets/neon-lab/nav-email-light.svg" alt="Email">
+    </picture>
+  </a>
+</p>
 
-  <img
-    width="100%"
-    src="./assets/profile-signal.svg"
-    alt="Applied AI engineering profile: FPT University B.Sc. AI, GPA 3.75 out of 4.00, graduating June 2027, open to AI Engineer and Applied AI roles"
-  />
+<p align="center">
+    <picture>
+      <source media="(max-width: 800px) and (prefers-color-scheme: dark)" srcset="./assets/neon-lab/work-dark-mobile.svg">
+      <source media="(max-width: 800px)" srcset="./assets/neon-lab/work-light-mobile.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="./assets/neon-lab/work-dark-desktop.svg">
+      <img width="100%" src="./assets/neon-lab/work-light-desktop.svg" alt="Selected systems — Proof of work. Four featured projects selected from eight portfolio projects.">
+    </picture>
+</p>
 
-  <p>
-    <a href="https://xuantrung-ai-portfolio.vercel.app/"><strong>PORTFOLIO ↗</strong></a>
-    &nbsp;&nbsp;·&nbsp;&nbsp;
-    <a href="mailto:nxt276651@gmail.com"><strong>EMAIL</strong></a>
-    &nbsp;&nbsp;·&nbsp;&nbsp;
-    <a href="./assets/NguyenXuanTrungCV.pdf"><strong>RESUME ↗</strong></a>
-  </p>
-</div>
+<p align="center">
+  <a href="https://github.com/xuantrung-DA/TraceVision">
+    <picture>
+      <source media="(max-width: 800px) and (prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/tracevision-dark-mobile-still.svg">
+      <source media="(max-width: 800px) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/tracevision-light-mobile-still.svg">
+      <source media="(prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/tracevision-dark-desktop-still.svg">
+      <source media="(prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/tracevision-light-desktop-still.svg">
+      <source media="(max-width: 800px) and (prefers-color-scheme: dark)" srcset="./assets/neon-lab/tracevision-dark-mobile.svg">
+      <source media="(max-width: 800px)" srcset="./assets/neon-lab/tracevision-light-mobile.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="./assets/neon-lab/tracevision-dark-desktop.svg">
+      <img width="100%" src="./assets/neon-lab/tracevision-light-desktop.svg" alt="TraceVision — Bilingual video search with timestamped citations. 52.3× cache-reuse speedup in the recorded local benchmark, reusing persisted outputs. View repository.">
+    </picture>
+  </a>
+</p>
 
-<br />
+<p align="center">
+  <a href="https://github.com/xuantrung-DA/Subject-Knowledge-Hub">
+    <picture>
+      <source media="(max-width: 800px) and (prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/knowledge-dark-mobile-still.svg">
+      <source media="(max-width: 800px) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/knowledge-light-mobile-still.svg">
+      <source media="(prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/knowledge-dark-desktop-still.svg">
+      <source media="(prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/knowledge-light-desktop-still.svg">
+      <source media="(max-width: 800px) and (prefers-color-scheme: dark)" srcset="./assets/neon-lab/knowledge-dark-mobile.svg">
+      <source media="(max-width: 800px)" srcset="./assets/neon-lab/knowledge-light-mobile.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="./assets/neon-lab/knowledge-dark-desktop.svg">
+      <img width="100%" src="./assets/neon-lab/knowledge-light-desktop.svg" alt="Subject Knowledge Hub — Version-aware PDF citations and resumable ingestion. 3/3 interrupted jobs recovered in controlled process-kill tests with fixture embeddings. View repository.">
+    </picture>
+  </a>
+</p>
 
-## 01 / About
+<p align="center">
+  <a href="https://github.com/xuantrung-DA/Paper-2026">
+    <picture>
+      <source media="(max-width: 800px) and (prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/aqb-dark-mobile-still.svg">
+      <source media="(max-width: 800px) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/aqb-light-mobile-still.svg">
+      <source media="(prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/aqb-dark-desktop-still.svg">
+      <source media="(prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/aqb-light-desktop-still.svg">
+      <source media="(max-width: 800px) and (prefers-color-scheme: dark)" srcset="./assets/neon-lab/aqb-dark-mobile.svg">
+      <source media="(max-width: 800px)" srcset="./assets/neon-lab/aqb-light-mobile.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="./assets/neon-lab/aqb-dark-desktop.svg">
+      <img width="100%" src="./assets/neon-lab/aqb-light-desktop.svg" alt="AQB-FAS — Split-computing face anti-spoofing with a 64-byte serialized latent. 97.01% CelebA-Spoof test accuracy using a validation-selected threshold. View repository.">
+    </picture>
+  </a>
+</p>
 
-<img align="right" width="155" src="./assets/CV_image.jpg" alt="Nguyen Xuan Trung" />
+<p align="center">
+  <a href="https://github.com/xuantrung-DA/Decision-Aware-Trajectory-Utility-in-Offline-RL">
+    <picture>
+      <source media="(max-width: 800px) and (prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/datu-dark-mobile-still.svg">
+      <source media="(max-width: 800px) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/datu-light-mobile-still.svg">
+      <source media="(prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/datu-dark-desktop-still.svg">
+      <source media="(prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/datu-light-desktop-still.svg">
+      <source media="(max-width: 800px) and (prefers-color-scheme: dark)" srcset="./assets/neon-lab/datu-dark-mobile.svg">
+      <source media="(max-width: 800px)" srcset="./assets/neon-lab/datu-light-mobile.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="./assets/neon-lab/datu-dark-desktop.svg">
+      <img width="100%" src="./assets/neon-lab/datu-light-desktop.svg" alt="DATU / Offline RL — Independent trajectory-utility study. Completed 86 training jobs across four offline-RL learners, with 17.8 million downstream gradient updates in the frozen original matrix. Results depend on the learner. View repository.">
+    </picture>
+  </a>
+</p>
 
-### Applied AI Engineer focused on systems, not demos.
+<p align="center">
+  <a href="https://xuantrung-ai-portfolio.vercel.app/#experience">
+    <picture>
+      <source media="(max-width: 800px) and (prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/experience-dark-mobile-still.svg">
+      <source media="(max-width: 800px) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/experience-light-mobile-still.svg">
+      <source media="(prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/experience-dark-desktop-still.svg">
+      <source media="(prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/experience-light-desktop-still.svg">
+      <source media="(max-width: 800px) and (prefers-color-scheme: dark)" srcset="./assets/neon-lab/experience-dark-mobile.svg">
+      <source media="(max-width: 800px)" srcset="./assets/neon-lab/experience-light-mobile.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="./assets/neon-lab/experience-dark-desktop.svg">
+      <img width="100%" src="./assets/neon-lab/experience-light-desktop.svg" alt="ECE Technology — AI Engineer Intern, Jan–Apr 2026. Built RFM product segmentation with Mini-Batch K-Means and market intelligence with Gemini/SerpAPI for an e-commerce MVP; delivered a FastAPI/PostgreSQL AI microservice with Docker deployment on AWS EC2.">
+    </picture>
+  </a>
+</p>
 
-I work at the intersection of **model engineering and backend delivery**—turning research and experiments into evaluated APIs, deployable services, and AI applications built for real-world use.
+<p align="center">
+  <a href="https://xuantrung-ai-portfolio.vercel.app/#research">
+    <picture>
+      <source media="(max-width: 800px) and (prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/research-dark-mobile-still.svg">
+      <source media="(max-width: 800px) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/research-light-mobile-still.svg">
+      <source media="(prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/research-dark-desktop-still.svg">
+      <source media="(prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/research-light-desktop-still.svg">
+      <source media="(max-width: 800px) and (prefers-color-scheme: dark)" srcset="./assets/neon-lab/research-dark-mobile.svg">
+      <source media="(max-width: 800px)" srcset="./assets/neon-lab/research-light-mobile.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="./assets/neon-lab/research-dark-desktop.svg">
+      <img width="100%" src="./assets/neon-lab/research-light-desktop.svg" alt="Research: Seven papers and manuscripts: two published, two accepted and three submitted. Weather forecasting &amp; shelter suggestion (published, AJCAI 2025 / Springer); YOLOv11n model optimization (published, EIDT 2025 / Springer); CounterFail-Edge (accepted, ICARCV 2026); WCA-GRU / Bearing RUL (accepted, SIMC 2026); TinyConformalAD (submitted, FISAT 2026); AQB-FAS / Quantized bottlenecks (submitted, RIVF 2026 · First author); Conditional routing for UAV detection (submitted, RIVF 2026). View publication details on the portfolio.">
+    </picture>
+  </a>
+</p>
 
-My focus spans **Computer Vision, LLM & Agentic Systems, and Backend AI**. The operating principle is simple: measure what matters, design the full lifecycle, and connect model quality to product impact.
+<p align="center">
+  <a href="https://xuantrung-ai-portfolio.vercel.app/#capabilities">
+    <picture>
+      <source media="(max-width: 800px) and (prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/toolkit-dark-mobile-still.svg">
+      <source media="(max-width: 800px) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/toolkit-light-mobile-still.svg">
+      <source media="(prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/toolkit-dark-desktop-still.svg">
+      <source media="(prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/toolkit-light-desktop-still.svg">
+      <source media="(max-width: 800px) and (prefers-color-scheme: dark)" srcset="./assets/neon-lab/toolkit-dark-mobile.svg">
+      <source media="(max-width: 800px)" srcset="./assets/neon-lab/toolkit-light-mobile.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="./assets/neon-lab/toolkit-dark-desktop.svg">
+      <img width="100%" src="./assets/neon-lab/toolkit-light-desktop.svg" alt="A practical stack, tied to real work. Programming &amp; ML Tools: Python, SQL, PyTorch, TensorFlow, scikit-learn, OpenCV. AI Domains: Machine Learning, Computer Vision, Natural Language Processing, Reinforcement Learning, Multimodal Learning, Time-Series Modeling. LLM &amp; Agentic Systems: LangChain, LangGraph, Retrieval-Augmented Generation (RAG), Tool Calling. Backend &amp; Engineering: FastAPI, REST APIs, PostgreSQL, SQL Server, ETL Pipelines, Git. Languages &amp; Strengths: English (B2), Analytical Thinking, Problem Solving.">
+    </picture>
+  </a>
+</p>
 
-<br clear="right" />
-
-## 02 / Engineering Stack
-
-<img
-  width="100%"
-  src="./assets/tech-stack.svg"
-  alt="Animated AI engineering control plane spanning model engineering, applied AI, agentic systems, and production delivery"
-/>
-
-## 03 / Selected Systems
-
-<img
-  width="100%"
-  src="./assets/selected-work.svg"
-  alt="Selected AI projects: Flux AI, Secure Login System, AI FOR ECOM, and AI Livestream Platform"
-/>
-
-## 04 / Research & Recognition
-
-<img
-  width="100%"
-  src="./assets/research.svg"
-  alt="Top 100 Excellent Students recognition and two applied AI papers published by Springer in 2026"
-/>
-
-## 05 / Credentials
-
-<img
-  width="100%"
-  src="./assets/credentials.svg"
-  alt="Credentials in MLOps, AI engineering, natural language processing, and deep learning"
-/>
-
-<br />
-
-<div align="center">
-  <img
-    width="100%"
-    src="./assets/footer.svg"
-    alt="Building AI systems that are accurate, useful, and deployable"
-  />
-</div>
+<p align="center">
+  <a href="mailto:nxt276651@gmail.com">
+    <picture>
+      <source media="(max-width: 800px) and (prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/footer-dark-mobile-still.svg">
+      <source media="(max-width: 800px) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/footer-light-mobile-still.svg">
+      <source media="(prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/footer-dark-desktop-still.svg">
+      <source media="(prefers-reduced-motion: reduce)" srcset="./assets/neon-lab/footer-light-desktop-still.svg">
+      <source media="(max-width: 800px) and (prefers-color-scheme: dark)" srcset="./assets/neon-lab/footer-dark-mobile.svg">
+      <source media="(max-width: 800px)" srcset="./assets/neon-lab/footer-light-mobile.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="./assets/neon-lab/footer-dark-desktop.svg">
+      <img width="100%" src="./assets/neon-lab/footer-light-desktop.svg" alt="Let’s build what’s next. Email: nxt276651@gmail.com. Available part-time through June 2027 and full-time from July 2027. B.Sc. AI at FPT University, GPA 3.75/4.0, expected graduation June 2027.">
+    </picture>
+  </a>
+</p>
