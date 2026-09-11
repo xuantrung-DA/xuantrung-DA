@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="100" viewBox="0 0 1000 100" role="img" aria-labelledby="title desc" style="--bg:#111218;--panel:#181a22;--line:#323541;--ink:#f2f2f7;--muted:#a6abba;--lime:#d2fa69;--violet:#b1a0ff;--soft:#232333">
-<title id="title">work</title><desc id="desc">AI engineering profile. Written content stays visible; motion is decorative.</desc><defs><style>text{font-family:Arial,"Segoe UI",sans-serif}
-.mono{font-family:Consolas,"Courier New",monospace}
-.star-spin{animation:spin 18s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style>
-<radialGradient id="haze"><stop stop-color="#b1a0ff" stop-opacity=".15"/><stop offset="1" stop-color="#b1a0ff" stop-opacity="0"/></radialGradient>
-<linearGradient id="scan-grad"><stop stop-color="#d2fa69" stop-opacity="0"/><stop offset="1" stop-color="#d2fa69" stop-opacity=".2"/></linearGradient>
-</defs><text x="8" y="24" font-size="12" fill="var(--lime)" font-weight="500" class="mono" letter-spacing="1.1">01 / SELECTED SYSTEMS</text><text x="6" y="68" font-size="44" fill="var(--ink)" font-weight="700" letter-spacing="-1.8">Proof of work.</text><text x="953" y="66" font-size="12" fill="var(--muted)" font-weight="500" class="mono" letter-spacing="1.1">[04]</text></svg>

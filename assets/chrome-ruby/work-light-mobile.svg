@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="92" viewBox="0 0 400 92" role="img" aria-labelledby="title desc" style="--bg:#edf0f4;--panel:#fbfcfe;--line:#b6bfcb;--ink:#1c2432;--muted:#515e70;--ruby:#b51536;--silver:#4d607a;--soft:#dbe2eb;--navink:#151922"><title id="title">work</title><desc id="desc">AI engineering profile. Written content stays visible; motion is decorative.</desc><defs><style>text{font-family:Arial,"Segoe UI",sans-serif}.mono{font-family:Consolas,"Courier New",monospace}
+.star-spin{animation:cr-spin 12s linear infinite}
+.cr-trace{stroke-dasharray:16 4 3 5 2 70;animation:cr-trace 2.2s linear infinite}
+.cr-orbit{animation:cr-spin 14s linear infinite}.cr-reverse{animation:cr-spin 19s linear infinite reverse}
+.cr-pulse{opacity:.8;animation:cr-pulse 3.2s ease-in-out infinite}
+.cr-node{opacity:.65;animation:cr-node 3.2s ease-in-out infinite}
+.cr-rise{animation:cr-rise 6.4s ease-in-out infinite}
+.cr-lift{animation:cr-lift 6.4s ease-in-out infinite}
+.cr-sheen{opacity:0;animation:cr-sheen 6.4s ease-in-out infinite}
+.cr-scan{animation:cr-scan 3.2s ease-in-out infinite alternate}
+.cr-phase{opacity:0;animation:cr-phase 6.4s linear infinite}.cr-phase:first-child{opacity:1}
+.cr-reveal{transform:scaleX(1);animation:cr-reveal 6.4s steps(23,end) infinite}
+.cr-caret{transform:translateX(194px);animation:cr-caret 6.4s steps(23,end) infinite}
+.cr-wave{transform-box:fill-box;transform-origin:center;animation:cr-wave .8s ease-in-out infinite alternate}
+.cr-ripple{transform-box:fill-box;transform-origin:center;opacity:.08;animation:cr-ripple 3.2s ease-out infinite}
+@keyframes cr-spin{to{transform:rotate(360deg)}}
+@keyframes cr-trace{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+@keyframes cr-pulse{0%,100%{opacity:.25}45%,65%{opacity:.85}}
+@keyframes cr-node{0%,100%{opacity:.15}35%,58%{opacity:1}}
+@keyframes cr-rise{0%,100%{transform:translateY(4px)}50%{transform:translateY(-9px)}}
+@keyframes cr-lift{0%,100%{transform:translateY(0)}45%,65%{transform:translateY(-18px)}}
+@keyframes cr-sheen{0%,18%{transform:translateX(-250px);opacity:0}30%{opacity:.35}60%{transform:translateX(250px);opacity:.35}70%,100%{transform:translateX(250px);opacity:0}}
+@keyframes cr-scan{from{transform:translateY(-55px)}to{transform:translateY(105px)}}
+@keyframes cr-phase{0%,28%{opacity:1}33.3%,100%{opacity:0}}
+@keyframes cr-reveal{0%,38%{transform:scaleX(0)}80%,97%{transform:scaleX(1)}100%{transform:scaleX(0)}}
+@keyframes cr-caret{0%,38%{transform:translateX(0)}80%,97%{transform:translateX(194px)}100%{transform:translateX(0)}}
+@keyframes cr-wave{from{transform:scaleY(.2)}to{transform:scaleY(1)}}
+@keyframes cr-ripple{0%{transform:scale(.65);opacity:0}25%{opacity:.2}100%{transform:scale(1.6);opacity:0}}
+</style></defs><defs>
+      <linearGradient id="cr-edge" x1="0" y1="0" x2="1" y2="1"><stop offset="0.000" stop-color="#8b99ab"/><stop offset="0.250" stop-color="#ffffff"/><stop offset="0.500" stop-color="#abb8c8"/><stop offset="0.750" stop-color="#ffffff"/><stop offset="1.000" stop-color="#8a9bb1"/></linearGradient>
+      <linearGradient id="cr-metal" x1="0" y1="0" x2=".3" y2="1"><stop offset="0.000" stop-color="#ffffff"/><stop offset="0.250" stop-color="#b5c1d0"/><stop offset="0.500" stop-color="#f9fcff"/><stop offset="0.750" stop-color="#a2afc0"/><stop offset="1.000" stop-color="#edf2f8"/></linearGradient>
+      <linearGradient id="cr-type" x1="0" y1="0" x2=".1" y2="1"><stop offset="0.000" stop-color="#182332"/><stop offset="0.333" stop-color="#526278"/><stop offset="0.667" stop-color="#253448"/><stop offset="1.000" stop-color="#162134"/></linearGradient>
+      <linearGradient id="cr-panel" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="var(--panel)"/><stop offset=".55" stop-color="var(--bg)"/><stop offset="1" stop-color="var(--panel)"/></linearGradient>
+      <linearGradient id="cr-glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="var(--soft)"/><stop offset=".45" stop-color="var(--bg)"/><stop offset="1" stop-color="var(--panel)"/></linearGradient>
+      <linearGradient id="cr-red" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8d0829"/><stop offset=".4" stop-color="#ff7289"/><stop offset=".54" stop-color="#cf173d"/><stop offset="1" stop-color="#530e23"/></linearGradient>
+      <linearGradient id="cr-sheen"><stop stop-color="#fff" stop-opacity="0"/><stop offset=".48" stop-color="#fff" stop-opacity=".7"/><stop offset=".51" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+      <radialGradient id="cr-aura"><stop stop-color="var(--ruby)" stop-opacity=".3"/><stop offset=".52" stop-color="var(--ruby)" stop-opacity=".09"/><stop offset="1" stop-color="var(--ruby)" stop-opacity="0"/></radialGradient>
+      <filter id="cr-glow" x="-90%" y="-90%" width="280%" height="280%"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <pattern id="cr-grain" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 .5H4" stroke="var(--silver)" stroke-opacity=".025"/></pattern>
+      <radialGradient id="haze"><stop stop-color="var(--ruby)" stop-opacity=".2"/><stop offset="1" stop-color="var(--ruby)" stop-opacity="0"/></radialGradient>
+      <linearGradient id="scan-grad"><stop stop-color="var(--ruby)" stop-opacity="0"/><stop offset="1" stop-color="var(--ruby)" stop-opacity=".28"/></linearGradient>
+    </defs><text x="8" y="24" font-size="10" fill="var(--ruby)" font-weight="500" class="mono" letter-spacing="1.1">01 / SELECTED SYSTEMS</text><text x="6" y="68" font-size="32" fill="url(#cr-type)" font-weight="700" letter-spacing="-1.8">Proof of work.</text><text x="353" y="66" font-size="12" fill="var(--muted)" font-weight="500" class="mono" letter-spacing="1.1">[04]</text><style>@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style></svg>
