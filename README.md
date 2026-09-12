@@ -21,7 +21,7 @@
 
 <p align="center">
   <a href="https://xuantrung-ai-portfolio.vercel.app/"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/chrome-ruby/nav-portfolio-dark.svg"><img width="150" src="./assets/chrome-ruby/nav-portfolio-light.svg" alt="Portfolio"></picture></a>
-  <a href="https://xuantrung-ai-portfolio.vercel.app/cv/NguyenXuanTrung_AI_Engineer_CV.pdf"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/chrome-ruby/nav-resume-dark.svg"><img width="150" src="./assets/chrome-ruby/nav-resume-light.svg" alt="Résumé"></picture></a>
+  <a href="https://xuantrung-ai-portfolio.vercel.app/cv/Nguyen-Xuan-Trung-AI-Engineer-CV.pdf"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/chrome-ruby/nav-resume-dark.svg"><img width="150" src="./assets/chrome-ruby/nav-resume-light.svg" alt="Résumé"></picture></a>
   <a href="https://www.linkedin.com/in/trung-nguyen-3932b4265/"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/chrome-ruby/nav-linkedin-dark.svg"><img width="150" src="./assets/chrome-ruby/nav-linkedin-light.svg" alt="LinkedIn"></picture></a>
   <a href="mailto:nxt276651@gmail.com"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/chrome-ruby/nav-email-dark.svg"><img width="150" src="./assets/chrome-ruby/nav-email-light.svg" alt="Email"></picture></a>
 </p>
